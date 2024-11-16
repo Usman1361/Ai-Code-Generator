@@ -18,7 +18,9 @@ export async function POST(req: NextRequest) {
   - Please ONLY return the full React code starting with the imports, nothing else. It's very important for my job that you only return the React code with imports. DO NOT START WITH \`\`\`typescript or \`\`\`javascript or \`\`\`tsx or \`\`\`.
   
   NO LIBRARIES (e.g. zod, hookform) ARE INSTALLED OR ABLE TO BE IMPORTED.`;
-    const together = new Together();
+    const together = new Together({
+      apiKey: process.env.TOGETHER_API_KEY
+    });
     const completion = await together.chat.completions.create({
         model: "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo",
         messages: [
